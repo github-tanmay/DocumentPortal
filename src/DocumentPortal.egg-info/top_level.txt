@@ -1,0 +1,5 @@
+__init__
+docanalyse
+documentcompare
+multidocChat
+singleChat
