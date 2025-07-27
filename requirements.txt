@@ -3,4 +3,8 @@ ipykernel
 python-dotenv
 langchain_groq
 langchain_google_genai
+faiss-cpu
+structlog
+PyMuPDF
+logging
 -e .
