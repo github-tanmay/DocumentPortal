@@ -1,3 +1,9 @@
-venv
+venv/
 .venv
 .env
+env
+__pycache__/
+*.pyc
+test.py
+logs/
+data/
