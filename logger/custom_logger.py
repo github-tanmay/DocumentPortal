@@ -1,4 +1,3 @@
-
 import logging
 import os
 from datetime import datetime
@@ -22,10 +21,10 @@ class CustomLogger:
     def get_logger(self,name=__file__):
         return logging.getLogger(os.path.basename(name))
     
-if __name__ == "__main__":
-    logger = CustomLogger().get_logger()
-    logger.info("This is an info message")
-    logger.error("This is an error message")
-    logger.warning("This is a warning message")
-    logger.debug("This is a debug message")
-    logger.critical("This is a critical message")
+# if __name__ == "__main__":
+#     logger = CustomLogger().get_logger()
+#     logger.info("This is an info message")
+#     logger.error("This is an error message")
+#     logger.warning("This is a warning message")
+#     logger.debug("This is a debug message")
+#     logger.critical("This is a critical message")
