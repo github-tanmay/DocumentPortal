@@ -7,4 +7,5 @@ faiss-cpu
 structlog
 PyMuPDF
 logging
+structlog
 -e .
