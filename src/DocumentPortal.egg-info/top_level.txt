@@ -1,5 +1,5 @@
 __init__
-docanalyse
-documentcompare
+document_analyzer
+document_compare
 multidocChat
 singleChat
