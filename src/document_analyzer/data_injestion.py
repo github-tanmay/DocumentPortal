@@ -63,29 +63,29 @@ class DocumentHandler:
             raise DocumentPortalException("Error reading PDF", e) from e
 
 
-if __name__ == "__main__":
-    from pathlib import Path
-    from io import BytesIO
+# if __name__ == "__main__":
+#     from pathlib import Path
+#     from io import BytesIO
     
-    pdf_path=r"C:\\Users\Asus\\OneDrive\\Desktop\\TanmayFiles\\Project1\\DocumentPortal\\data\\NIPS-2017-attention-is-all-you-need-Paper.pdf"
-    class DummnyFile:
-        def __init__(self,file_path):
-            self.name = Path(file_path).name
-            self._file_path = file_path
-        def getbuffer(self):
-            return open(self._file_path, "rb").read()
+#     pdf_path=r"C:\\Users\Asus\\OneDrive\\Desktop\\TanmayFiles\\Project1\\DocumentPortal\\data\\NIPS-2017-attention-is-all-you-need-Paper.pdf"
+#     class DummnyFile:
+#         def __init__(self,file_path):
+#             self.name = Path(file_path).name
+#             self._file_path = file_path
+#         def getbuffer(self):
+#             return open(self._file_path, "rb").read()
         
-    dummy_pdf = DummnyFile(pdf_path)
+#     dummy_pdf = DummnyFile(pdf_path)
     
-    handler = DocumentHandler()
+#     handler = DocumentHandler()
     
-    try:
-        saved_path=handler.save_pdf(dummy_pdf)
-        print(saved_path)
+#     try:
+#         saved_path=handler.save_pdf(dummy_pdf)
+#         print(saved_path)
         
-        content=handler.read_pdf(saved_path)
-        print("PDF Content:")
-        print(content[:50])  # Print first 500 characters of the PDF content
+#         content=handler.read_pdf(saved_path)
+#         print("PDF Content:")
+#         print(content[:50])  # Print first 500 characters of the PDF content
         
-    except Exception as e:
-        print(f"Error: {e}")
+#     except Exception as e:
+#         print(f"Error: {e}")
