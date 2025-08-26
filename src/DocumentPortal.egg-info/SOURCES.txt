@@ -6,9 +6,10 @@ src/DocumentPortal.egg-info/SOURCES.txt
 src/DocumentPortal.egg-info/dependency_links.txt
 src/DocumentPortal.egg-info/top_level.txt
 src/document_analyzer/__init__.py
-src/document_analyzer/analysis.py
+src/document_analyzer/data_analysis.py
 src/document_analyzer/data_injestion.py
 src/document_compare/__init__.py
-src/document_compare/retrievel.py
+src/document_compare/data_injestion.py
+src/document_compare/document_comparator.py
 src/multidocChat/__init__.py
 src/singleChat/__init__.py

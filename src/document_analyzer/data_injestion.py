@@ -1,6 +1,6 @@
 import os
 import sys
-from Exception.custom_exception import DocumentPortalException
+from exception.custom_exception import DocumentPortalException
 from dotenv import load_dotenv
 from datetime import datetime
 import uuid
