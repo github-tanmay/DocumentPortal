@@ -9,6 +9,7 @@ from utils.model_loader import ModelLoader
 from logger.custom_logger import CustomLogger
 from Prompt.prompt_library import PROMPT_REGISTORY
 from exception.custom_exception import DocumentPortalException
+from model.models import PromptType
 
 class DocumentComparatorLLM:
     """
@@ -21,7 +22,7 @@ class DocumentComparatorLLM:
         self.llm = self.loader.load_llm()
         self.parser = JsonOutputParser(pydantic_object=ChangeFormat)
         self.fixing_parser = OutputFixingParser.from_llm(parser=self.parser, llm=self.llm)
-        self.prompt = PROMPT_REGISTORY["document_comparsion"]
+        self.prompt = PROMPT_REGISTORY[PromptType.DOCUMENT_COMPARISON.value]
         self.chain = self.prompt | self.llm | self.fixing_parser
         self.log.info("DocumentComparatorLLM initialized successfully")
         
@@ -31,11 +32,11 @@ class DocumentComparatorLLM:
         Compare two documents and return the differences.
         """
         try:
-            inputs={"combined_document":combined_document,
-                    "format_instructions":self.parser.get_format_instructions()}
+            inputs={"combined_docs":combined_document,
+                    "format_instruction":self.parser.get_format_instructions()}
             self.log.info("starting document comparison")
             response = self.chain.invoke(inputs)
-            self.log.info("Document comparison completed successfully.")
+            self.log.info("Document comparison completed successfully.",response_preview=str(response)[:200])
             return self._format_response(response)
         except Exception as e:
             self.log.error(f"Error comparing documents: {e}")
