@@ -26,14 +26,29 @@ class DocumentComparatorLLM:
         self.log.info("DocumentComparatorLLM initialized successfully")
         
     
-    def compare_documents(self, document1, document2):
+    def compare_documents(self, combined_document:str)-> pd.DataFrame:
         """
         Compare two documents and return the differences.
         """
-        pass
+        try:
+            inputs={"combined_document":combined_document,
+                    "format_instructions":self.parser.get_format_instructions()}
+            self.log.info("starting document comparison")
+            response = self.chain.invoke(inputs)
+            self.log.info("Document comparison completed successfully.")
+            return self._format_response(response)
+        except Exception as e:
+            self.log.error(f"Error comparing documents: {e}")
+            raise DocumentPortalException("An error occurred while comparing documents.", sys)
 
-    def _format_response(self):
+    def _format_response(self,response:list[dict])-> pd.DataFrame:
         """
         Format the response from the language model to match the expected schema.
         """
-        pass
+        try:
+            df = pd.DataFrame(response)
+            self.log.info("Response formatted successfully.", records=len(df))
+            return df
+        except Exception as e:
+            self.log.error(f"Error formatting response: {e}")
+            raise DocumentPortalException("An error occurred while formatting the response.", sys)
