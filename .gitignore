@@ -9,3 +9,4 @@ logs/
 data/
 DcoumentPortal.egg-info/
 test.py
+faiss_index/
