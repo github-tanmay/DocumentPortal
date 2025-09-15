@@ -7,6 +7,7 @@ from model.models import *
 from langchain_core.output_parsers import JsonOutputParser
 from langchain.output_parsers import OutputFixingParser
 from Prompt.prompt_library import PROMPT_REGISTORY
+from model.models import PromptType
 
 class DocumentAnalyzer:
     """
@@ -23,7 +24,7 @@ class DocumentAnalyzer:
             self.parser = JsonOutputParser(pydantic_object=Metadata)
             self.fixing_parser = OutputFixingParser.from_llm(parser=self.parser, llm=self.llm)
             
-            self.prompt = PROMPT_REGISTORY["document_analysis"]
+            self.prompt = PROMPT_REGISTORY[PromptType.DOCUMENT_ANALYSIS.value]
             
             self.log.info("DocumentAnalyzer initialized successfully")
             
@@ -54,6 +55,6 @@ class DocumentAnalyzer:
 
         except Exception as e:
             self.log.error("Metadata analysis failed", error=str(e))
-            raise DocumentPortalException("Metadata extraction failed") from e
+            raise DocumentPortalException("Error during document analysis", sys)
         
     

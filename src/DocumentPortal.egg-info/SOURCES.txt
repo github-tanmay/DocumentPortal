@@ -13,3 +13,5 @@ src/document_compare/data_injestion.py
 src/document_compare/document_comparator.py
 src/multidocChat/__init__.py
 src/singleChat/__init__.py
+src/singleChat/data_injestion.py
+src/singleChat/retrieval.py
